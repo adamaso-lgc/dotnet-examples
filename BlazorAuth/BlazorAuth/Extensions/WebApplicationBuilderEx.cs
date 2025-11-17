@@ -46,6 +46,6 @@ public static class WebApplicationBuilderEx
             .AddInteractiveServerRenderMode();
 
 // Add additional endpoints required by the Identity /Account Razor components.
-        app.MapAdditionalIdentityEndpoints();
+       // app.MapAdditionalIdentityEndpoints();
     }
 }

@@ -9,10 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="Data\app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.5.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.0"/>
@@ -20,6 +16,16 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0"/>
         <PackageReference Include="Npgsql" Version="10.0.0-rc.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\ExternalLoginPicker.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\ManageLayout.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\ManageNavMenu.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\PasskeySubmit.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\RedirectToLogin.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\ShowRecoveryCodes.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Shared\StatusMessage.razor" />
     </ItemGroup>
 
 </Project>
