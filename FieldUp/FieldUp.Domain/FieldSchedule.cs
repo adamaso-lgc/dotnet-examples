@@ -13,14 +13,14 @@ public class FieldSchedule : AggregateRoot<string>
     
     public FieldSchedule() {}
     
-    public static FieldSchedule Create(Guid fieldId, DateOnly date)
+    public static FieldSchedule Create(string id,Guid fieldId, DateOnly date)
     {
         var schedule = new FieldSchedule();
-        schedule.AddEvent(new FieldScheduleCreated(fieldId, date));
+        schedule.AddEvent(new FieldScheduleCreated(id, fieldId, date));
         return schedule;
     }
     
-    public void Reserve(Guid reservationId, Name name, string email, TimeRange range)
+    public void CreateReservation(Guid reservationId, Name name, string email, TimeRange range)
     {
         if (_reservations.Any(r => r.Status != ReservationStatus.Cancelled && r.Range.Overlaps(range)))
             throw new InvalidOperationException("Time slot already taken.");
@@ -38,9 +38,9 @@ public class FieldSchedule : AggregateRoot<string>
     
     public void Apply(FieldScheduleCreated e)
     {
+        Id = e.Id;
         FieldId = e.FieldId;
         Date = e.Date;
-        Id = $"{e.FieldId}:{e.Date:yyyy-MM-dd}";
     }
 
     public void Apply(ReservationCreated e)
