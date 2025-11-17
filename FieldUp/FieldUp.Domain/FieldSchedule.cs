@@ -1,5 +1,4 @@
 using FieldUp.Domain.Core;
-using FieldUp.Domain.Enums;
 using FieldUp.Domain.Events;
 using FieldUp.Domain.ValueObjects;
 
@@ -27,8 +26,8 @@ public class FieldSchedule : AggregateRoot<string>
             throw new InvalidOperationException("Time slot already taken.");
 
         AddEvent(new ReservationCreated(
-            Id,
             reservationId,
+            FieldId,
             name.FirstName,
             name.LastName,
             email,

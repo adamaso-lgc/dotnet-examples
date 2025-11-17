@@ -1,8 +1,8 @@
 namespace FieldUp.Domain.Events;
 
 public record ReservationCreated(
-    string FieldScheduleId,
     Guid ReservationId,
+    Guid FieldId,
     string FirstName,
     string LastName,
     string Email,

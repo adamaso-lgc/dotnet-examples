@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace FieldUp.Domain.Core;
 
-public abstract class AggregateRoot<TId>
+public abstract class AggregateRoot<TId> : IAggregateRoot<TId>
 {
     public TId Id { get; set; }
 

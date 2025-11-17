@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldUp.Domain", "FieldUp.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldUp.Domain.UnitTests", "FieldUp.Domain.UnitTests\FieldUp.Domain.UnitTests.csproj", "{1D115B78-04C1-4026-B8B7-56EC5677F998}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldUp.Infrastructure", "FieldUp.Infrastructure\FieldUp.Infrastructure.csproj", "{DC032C0F-DFFB-434B-A69D-447686072B1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1D115B78-04C1-4026-B8B7-56EC5677F998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D115B78-04C1-4026-B8B7-56EC5677F998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D115B78-04C1-4026-B8B7-56EC5677F998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC032C0F-DFFB-434B-A69D-447686072B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC032C0F-DFFB-434B-A69D-447686072B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC032C0F-DFFB-434B-A69D-447686072B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC032C0F-DFFB-434B-A69D-447686072B1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

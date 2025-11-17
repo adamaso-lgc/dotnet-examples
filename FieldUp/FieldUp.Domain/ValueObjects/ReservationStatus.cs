@@ -1,4 +1,4 @@
-namespace FieldUp.Domain.Enums;
+namespace FieldUp.Domain.ValueObjects;
 
 public enum ReservationStatus
 {

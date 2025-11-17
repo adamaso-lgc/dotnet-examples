@@ -1,4 +1,3 @@
-using FieldUp.Domain.Enums;
 using FieldUp.Domain.ValueObjects;
 
 namespace FieldUp.Domain;
