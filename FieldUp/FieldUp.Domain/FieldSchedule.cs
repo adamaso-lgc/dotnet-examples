@@ -1,4 +1,5 @@
 using FieldUp.Domain.Core;
+using FieldUp.Domain.Enums;
 using FieldUp.Domain.Events;
 using FieldUp.Domain.ValueObjects;
 
@@ -22,7 +23,7 @@ public class FieldSchedule : AggregateRoot<string>
     
     public void Reserve(Guid reservationId, Name name, string email, TimeRange range)
     {
-        if (_reservations.Any(r => r.Range.Overlaps(range)))
+        if (_reservations.Any(r => r.Status != ReservationStatus.Cancelled && r.Range.Overlaps(range)))
             throw new InvalidOperationException("Time slot already taken.");
 
         AddEvent(new ReservationCreated(
@@ -52,6 +53,4 @@ public class FieldSchedule : AggregateRoot<string>
             new TimeRange(e.Start, e.End)
         ));
     }
-    
-    
 }

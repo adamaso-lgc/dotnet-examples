@@ -11,11 +11,24 @@ public class Address : ValueObject
     
     public Address(string line, string city, string postalCode, string country = "Portugal")
     {
-        Line = line.Trim() ?? throw new ArgumentException("Line required");
-        City = city.Trim() ?? throw new ArgumentException("City required");
-        PostalCode = postalCode.Trim() ?? throw new ArgumentException("Postal code required");
+        if (string.IsNullOrWhiteSpace(line))
+            throw new ArgumentException("Line cannot be empty.", nameof(line));
+    
+        if (string.IsNullOrWhiteSpace(city))
+            throw new ArgumentException("City cannot be empty.", nameof(city));
+    
+        if (string.IsNullOrWhiteSpace(postalCode))
+            throw new ArgumentException("Postal code cannot be empty.", nameof(postalCode));
+    
+        if (string.IsNullOrWhiteSpace(country))
+            throw new ArgumentException("Country cannot be empty.", nameof(country));
+
+        Line = line.Trim();
+        City = city.Trim();
+        PostalCode = postalCode.Trim();
         Country = country.Trim();
     }
+
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

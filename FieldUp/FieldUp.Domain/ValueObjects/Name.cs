@@ -10,14 +10,10 @@ public class Name : ValueObject
     public Name(string firstName, string lastName)
     {
         if (string.IsNullOrWhiteSpace(firstName))
-        {
             throw new ArgumentNullException(nameof(firstName));
-        }
             
         if (string.IsNullOrWhiteSpace(lastName))
-        {
             throw new ArgumentNullException(nameof(lastName));
-        }
         
         FirstName = firstName.Trim();
         LastName = lastName.Trim();
