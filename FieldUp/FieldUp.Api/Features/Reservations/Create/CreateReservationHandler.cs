@@ -1,26 +1,17 @@
+using FieldUp.Api.Features.FieldSchedule.Create;
 using FieldUp.Domain.ValueObjects;
 using FieldUp.Infrastructure.Persistence;
 using MediatR;
 
-namespace FieldUp.Api.Features.FieldSchedule;
+namespace FieldUp.Api.Features.Reservations.Create;
 
-public record CreateReservationRequest : IRequest
-{
-    public Guid FieldId { get; init; }
-    public required string FirstName { get; init; }
-    public required string LastName { get; init; }
-    public required string Email { get; init; }
-    public DateTime Start { get; init; }
-    public DateTimeOffset End{ get; init; }
-}
-
-public class CreateReservation(IEventRepository<Domain.FieldSchedule, string> eventRepository) 
-    :  IRequestHandler<CreateReservationRequest>
+public class CreateReservationHandler(IEventRepository<Domain.FieldSchedule, string> eventRepository) 
+    :  IRequestHandler<CreateReservationRequest, Guid>
 {
     private readonly IEventRepository<Domain.FieldSchedule, string> _eventRepository = 
         eventRepository ?? throw  new ArgumentNullException(nameof(eventRepository));
     
-    public async Task Handle(CreateReservationRequest request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateReservationRequest request, CancellationToken cancellationToken)
     {
         var date = DateOnly.FromDateTime(request.Start);
         var scheduleId = $"{request.FieldId:N}:{date:yyyy-MM-dd}";
@@ -38,5 +29,7 @@ public class CreateReservation(IEventRepository<Domain.FieldSchedule, string> ev
         );
         
         await _eventRepository.SaveAsync(schedule, cancellationToken);
+
+        return reservationId;
     }
 }
