@@ -7,6 +7,7 @@ using FieldUp.Infrastructure.Persistence.Marten;
 using FieldUp.Infrastructure.Projections;
 using FieldUp.Infrastructure.Services;
 using JasperFx;
+using JasperFx.Events;
 using JasperFx.Events.Daemon;
 using JasperFx.Events.Projections;
 using Marten;
@@ -57,6 +58,7 @@ public static class ServiceCollectionEx
                     var opts = new StoreOptions();
                     opts.Connection(connectionString);
                     opts.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
+                    opts.Events.StreamIdentity = StreamIdentity.AsString;
                     opts.Projections.Add<ReservationViewProjection>(ProjectionLifecycle.Async);
             
                     return opts;

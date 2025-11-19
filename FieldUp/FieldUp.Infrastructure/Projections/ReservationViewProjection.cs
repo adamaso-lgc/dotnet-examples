@@ -8,7 +8,7 @@ public class ReservationViewProjection : SingleStreamProjection<ReservationView,
 {
     public void Apply(ReservationView view, ReservationCreated e)
     {
-        view.Id = e.ReservationId;
+        view.Id = e.ReservationId.ToString();
         view.FieldId = e.FieldId;
         view.Start = e.Start;
         view.End = e.End;
