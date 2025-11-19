@@ -2,7 +2,7 @@ namespace FieldUp.Infrastructure.Projections;
 
 public class ReservationView
 {
-    public Guid ReservationId { get; set; }
+    public Guid Id { get; set; }
     public Guid FieldId { get; set; }
     public DateTimeOffset Start { get; set; }
     public DateTimeOffset End { get; set; }

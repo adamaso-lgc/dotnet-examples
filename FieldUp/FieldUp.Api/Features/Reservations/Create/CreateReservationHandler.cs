@@ -1,4 +1,3 @@
-using FieldUp.Api.Features.FieldSchedule.Create;
 using FieldUp.Domain.ValueObjects;
 using FieldUp.Infrastructure.Persistence;
 using MediatR;

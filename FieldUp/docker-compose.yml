@@ -1,9 +1,18 @@
 services:
   mailpit:
-    image: mailpit/mailpit:latest
+    image: axllent/mailpit
+    container_name: mailpit
+    restart: unless-stopped
+    volumes:
+      - ./.data:/data
     ports:
-      - "1025:1025"
-      - "8025:8025"
+      - 8025:8025
+      - 1025:1025
+    environment:
+      MP_MAX_MESSAGES: 5000
+      MP_DATABASE: /data/mailpit.db
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
   
   postgres:
     container_name: field-up-db
@@ -19,16 +28,16 @@ services:
 
   localstack:
     container_name: localstack
-    image: localstack/localstack:3
+    image: localstack/localstack
     ports:
       - "4566:4566"
     environment:
-      - SERVICES=secretsmanager
       - DEBUG=1
       - LS_LOG=info
     volumes:
-      - ./.localstack:/etc/localstack/init/ready.d
       - localstack_data:/var/lib/localstack
+      - ./.localstack/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   postgres_data:

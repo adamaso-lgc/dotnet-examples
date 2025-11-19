@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using MediatR;
 
-namespace FieldUp.Api.Features.FieldSchedule.Create;
+namespace FieldUp.Api.Features.Reservations.Create;
 
 public record CreateReservationRequest : IRequest<Guid>
 {

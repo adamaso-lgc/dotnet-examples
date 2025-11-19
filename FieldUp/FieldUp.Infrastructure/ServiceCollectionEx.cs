@@ -48,7 +48,7 @@ public static class ServiceCollectionEx
 
             services.AddMarten(sp =>
                 {
-                    var options = sp.GetRequiredService<IOptionsSnapshot<PostgresOptions>>().Value;
+                    var options = sp.GetRequiredService<IOptions<PostgresOptions>>().Value;
                     var secretReader = sp.GetRequiredService<ISecretProvider>();
                 
                     var password = secretReader.GetRequiredSecret(PostgresOptions.PasswordSecretKey);

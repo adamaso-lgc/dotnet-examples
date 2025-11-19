@@ -1,4 +1,4 @@
-using FieldUp.Api.Features.FieldSchedule.Create;
+using FieldUp.Api.Features.Reservations.Create;
 using MediatR;
 
 namespace FieldUp.Api.Features.Reservations;
