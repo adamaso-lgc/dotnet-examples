@@ -6,7 +6,10 @@ using Wolverine;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseWolverine();
+// builder.Host.UseWolverine(opts =>
+// {
+//     opts.OnE
+// });
 
 builder.Services.AddOpenApi();
 builder.Services.AddValidation();

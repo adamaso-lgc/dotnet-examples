@@ -1,10 +1,11 @@
 using FieldUp.Domain.Events;
 using FieldUp.Infrastructure.Services;
 using Wolverine.Attributes;
+using Wolverine.Marten;
 
 namespace FieldUp.Api.Features.Reservations.Create;
 
-[WolverineHandler]
+[AggregateHandler]
 public class ReservationCreatedHandler(
     IEmailService emailService,
     ILogger<ReservationCreatedHandler> logger,

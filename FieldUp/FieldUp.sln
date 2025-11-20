@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-files", ".solutio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".localstack", ".localstack", "{D7A5BDD9-A3DB-472D-952E-C8E5FBC28198}"
 	ProjectSection(SolutionItems) = preProject
-		.localstack\init.sh = .localstack\init.sh
+		.localstack\init-aws.sh = .localstack\init-aws.sh
 	EndProjectSection
 EndProject
 Global

@@ -6,6 +6,7 @@ using FieldUp.Infrastructure.Persistence;
 using FieldUp.Infrastructure.Persistence.Marten;
 using FieldUp.Infrastructure.Projections;
 using FieldUp.Infrastructure.Services;
+using FieldUp.Infrastructure.Subscriptions;
 using JasperFx;
 using JasperFx.Events;
 using JasperFx.Events.Daemon;
@@ -51,7 +52,7 @@ public static class ServiceCollectionEx
                 {
                     var options = sp.GetRequiredService<IOptions<PostgresOptions>>().Value;
                     var secretReader = sp.GetRequiredService<ISecretProvider>();
-                
+
                     var password = secretReader.GetRequiredSecret(PostgresOptions.PasswordSecretKey);
                     var connectionString = options.BuildConnectionString(password);
 
@@ -60,14 +61,11 @@ public static class ServiceCollectionEx
                     opts.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
                     opts.Events.StreamIdentity = StreamIdentity.AsString;
                     opts.Projections.Add<ReservationViewProjection>(ProjectionLifecycle.Async);
-            
+                    opts.Events.Subscribe(new ReservationSubscription());
+
                     return opts;
                 })
-                .AddAsyncDaemon(DaemonMode.HotCold)
-                .IntegrateWithWolverine(cfg =>
-                {
-                    cfg.UseWolverineManagedEventSubscriptionDistribution = true;
-                });
+                .AddAsyncDaemon(DaemonMode.HotCold);
 
             services.AddScoped(typeof(IRepository<,>), typeof(MartenRepository<,>));
             services.AddScoped(typeof(IEventRepository<,>), typeof(MartenEventRepository<,>));
